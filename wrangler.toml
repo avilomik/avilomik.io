@@ -1,0 +1,8 @@
+name = "avilomik-io"
+compatibility_date = "2026-01-07"
+main = "./dist/_worker.js"
+assets = { directory = "./dist" }
+
+[site]
+bucket = "./dist"
+entry-point = "./dist/_worker.js"

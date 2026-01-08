@@ -10,7 +10,7 @@ const BOOT_LOGS = [
     "[ OK ] MISSION CONTROL READY."
 ];
 
-export default function TerminalBoot({ onComplete }: { onComplete: () => void }) {
+export default function TerminalBoot() {
     const [logs, setLogs] = useState<string[]>([]);
     const [index, setIndex] = useState(0);
 
@@ -22,10 +22,12 @@ export default function TerminalBoot({ onComplete }: { onComplete: () => void })
             }, Math.random() * 400 + 100);
             return () => clearTimeout(timer);
         } else {
-            const timer = setTimeout(onComplete, 1000);
+            const timer = setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('boot-complete'));
+            }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [index, onComplete]);
+    }, [index]);
 
     return (
         <div className="fixed inset-0 bg-void z-[100] flex flex-col items-center justify-center p-4 font-mono">

@@ -52,6 +52,21 @@ import TerminalBoot from '../components/TerminalBoot';
 		</section>
 	</div>
 
-	<TerminalBoot client:load onComplete={() => document.getElementById('content')?.classList.remove('hidden')} />
+	<TerminalBoot client:load />
+
+	<script>
+		window.addEventListener('boot-complete', () => {
+			const content = document.getElementById('content');
+			if (content) {
+				content.classList.remove('hidden');
+				// Also hide the boot component container if needed, but the current layout 
+				// relies on index.astro logic.
+				const bootOverlay = document.querySelector('div.fixed.inset-0.bg-void.z-\\[100\\]');
+				if (bootOverlay instanceof HTMLElement) {
+					bootOverlay.style.display = 'none';
+				}
+			}
+		});
+	</script>
 </TacticalLayout>
 

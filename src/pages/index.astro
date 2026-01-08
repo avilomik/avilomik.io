@@ -1,0 +1,57 @@
+---
+import TacticalLayout from '../layouts/TacticalLayout.astro';
+import BackgroundCanvas from '../components/BackgroundCanvas';
+import TerminalBoot from '../components/TerminalBoot';
+---
+
+<TacticalLayout title="AVILOMIK // MISSION CONTROL">
+	<BackgroundCanvas client:load />
+	
+	<div id="content" class="hidden">
+		<section class="h-screen flex flex-col items-center justify-center p-8">
+			<div class="w-full max-w-4xl border border-terminal-green/30 bg-slate-tactical/20 p-8 relative overflow-hidden backdrop-blur-sm shadow-[0_0_50px_rgba(0,255,65,0.1)]">
+				<div class="absolute top-0 right-0 p-2 text-[10px] font-ocr text-terminal-amber">COORD: 34.0522° N, 118.2437° W</div>
+				
+				<h1 class="text-4xl md:text-6xl mb-4 text-terminal-green animate-pulse">AVILOMIK <span class="text-terminal-amber">STUDIOS</span></h1>
+				
+				<div class="space-y-4 mb-8">
+					<p class="text-sm border-l-2 border-terminal-green pl-4 max-w-2xl">
+						DEPLOYING INNOVATIVE AI SOLUTIONS AND VIBE-CENTRIC HARDWARE. 
+						FROM FLIPPER ZERO RESEARCH TO ELITE DIGITAL ARMORY SCALING.
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div class="border border-terminal-green/20 p-4 hover:bg-terminal-green/5 transition-colors group cursor-pointer relative">
+						<div class="flex justify-between items-start mb-2">
+							<span class="text-[10px] text-terminal-amber font-ocr">OP_01</span>
+							<span class="text-[10px] px-1 border border-terminal-green text-terminal-green">ACTIVE</span>
+						</div>
+						<h3 class="text-lg group-hover:text-terminal-amber transition-colors">PROJECT_MARAUDER</h3>
+						<p class="text-xs opacity-60 mt-2">Next-gen signal interception and map visualization tactical hub.</p>
+						<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-terminal-amber/30"></div>
+					</div>
+
+					<div class="border border-terminal-green/20 p-4 opacity-40 grayscale relative overflow-hidden group">
+						<div class="absolute inset-0 bg-red-900/10 flex items-center justify-center rotate-12 z-10">
+							<span class="text-terminal-red text-xl font-ocr border-4 border-terminal-red p-2">REDACTED</span>
+						</div>
+						<div class="flex justify-between items-start mb-2">
+							<span class="text-[10px] text-terminal-red font-ocr">OP_02</span>
+						</div>
+						<h3 class="text-lg">OPERATION_VIBE</h3>
+						<p class="text-xs mt-2">Classified AI agent architecture for autonomous content generation.</p>
+					</div>
+				</div>
+
+				<div class="mt-8 pt-8 border-t border-terminal-green/10 flex flex-wrap gap-4">
+					<button class="px-6 py-2 border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-void transition-all uppercase text-xs font-ocr">Enter Terminal</button>
+					<button class="px-6 py-2 border border-terminal-amber text-terminal-amber hover:bg-terminal-amber hover:text-void transition-all uppercase text-xs font-ocr">Dossier</button>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<TerminalBoot client:load onComplete={() => document.getElementById('content')?.classList.remove('hidden')} />
+</TacticalLayout>
+
